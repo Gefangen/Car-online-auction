@@ -1,0 +1,26 @@
+<form [formGroup]="formModel" (ngSubmit)="onSearch()" novalidate >
+  <div class="form-group" [class.has-error]="formModel.hasError('minlength','title')">
+    <label for="productTitle">汽车参数：</label>
+    <input formControlName="title" type="text" id="productTitle" placeholder="汽车名称" class="form-control">
+    <span class="help-block" [class.hidden]="!formModel.hasError('minlength','title')">
+      请输入2个以上字符
+    </span>
+  </div>
+  <div class="form-group" [class.has-error]="formModel.hasError('positiveNumber','price')">
+    <label for="productPrice">汽车价格：</label>
+    <input formControlName="price" type="number" id="productPrice" placeholder="汽车价格" class="form-control">
+    <span class="help-block" [class.hidden]="!formModel.hasError('positiveNumber','price')">
+      请输入正数
+    </span>
+  </div>
+  <div class="form-group">
+      <label for="productCategory">汽车类别：</label>
+      <select formControlName="category" id="productCategory" class="form-control">
+        <option value="-1">全部分类</option>
+        <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+      </select>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary byn-block">搜素</button>
+  </div>
+</form>

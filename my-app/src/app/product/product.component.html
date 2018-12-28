@@ -1,0 +1,14 @@
+<div *ngFor="let product of products | async" class="col-md-4 col-sm-4 col-lg-4">
+<!--*ngFor="let product of products"的作用是根据products数量循环此段代码-->
+  <div class="thumbnail">
+    <img [src]="imgUrl">
+    <div class="caption">
+      <h4 classs="pull-right">{{product.price}}万</h4>
+      <h4><a [routerLink]="['/product',product.id]">{{product.title}}</a></h4>
+      <p>{{product.desc}}</p>
+    </div>
+    <div>
+      <app-stars [rating]="product.rating"></app-stars>
+    </div>
+  </div>
+</div>

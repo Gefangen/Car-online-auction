@@ -79,9 +79,9 @@ wsServer.on("connection", function (websocket) {
     websocket.send('The message was sent by server');
     websocket.on('message', function (message) {
         //let str = message;
-        //let messageObj = JSON.parse(message);
-        //let productIds = subscriptions.get(websocket) || [];
-        //subscriptions.set(websocket, [...productIds,messageObj.productId]);
+        let messageObj = JSON.parse(message);
+        let productIds = subscriptions.get(websocket) || [];
+        subscriptions.set(websocket, [...productIds,messageObj.productId]);
         console.log("接收到消息：" + message);
     });
 });
